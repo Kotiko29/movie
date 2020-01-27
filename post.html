@@ -8,24 +8,73 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./static/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./static/favicon/favicon-16x16.png">
   <link rel="manifest" href="./static/favicon/site.webmanifest"> -->
-  <title>Webpack Temple</title>
+  <title>Page movie</title>
 </head>
 <body>
   <div class="wrapper">
-    <header>
-
-    </header>
-    <div class="main-content">
+    <header class="page-header">
       <div class="container">
-        <h2>Headline H2</h2>
-        Post content
+       <a>Home</a>
+      </div>
+    </header>
+    <div class="container">
+      <div class="main-content">
+        <nav class="sidebar">
+          <div class="title-wrap">
+            <h2>Categories:</h2>
+          </div>
+          <ul class="categories-list">
+            <li class="categories-item"><a href="">Action</a></li>
+            <li class="categories-item"><a href="">Adventure</a></li>
+            <li class="categories-item"><a href="">Animation</a></li>
+            <li class="categories-item"><a href="">Comedy</a></li>
+            <li class="categories-item"><a href="">Crime</a></li>
+            <li class="categories-item"><a href="">Documentary</a></li>
+            <li class="categories-item"><a href="">Drama</a></li>
+            <li class="categories-item"><a href="">Family</a></li>
+            <li class="categories-item"><a href="">Fantasy</a></li>
+            <li class="categories-item"><a href="">History</a></li>
+            <li class="categories-item"><a href="">Horror</a></li>
+            <li class="categories-item"><a href="">Music</a></li>
+            <li class="categories-item"><a href="">Mystery</a></li>
+            <li class="categories-item"><a href="">Romance</a></li>
+            <li class="categories-item"><a href="">Science Fiction</a></li>
+            <li class="categories-item"><a href="">TV Movie</a></li>
+            <li class="categories-item"><a href="">Thriller</a></li>
+            <li class="categories-item"><a href="">War</a></li>
+            <li class="categories-item"><a href="">Western</a></li>
+          </ul>
+        </nav>
+        <main class="movie-content">
+          <div class="movie-info">
+            <div class="movie-description">
+              <h2>Ad Astra</h2>
+              <p>In the near future, the Solar System is struck by mysterious power surges, threatening all human life. After nearly dying from an incident caused by a surge, Major Roy McBride, son of famed astronaut H. Clifford McBride, is informed by U.S. Space Command (SpaceCom) that the surges have been traced to the "Lima Project" – created 29 years earlier to search the limits of the Solar.</p>
+              <div class="movie-rating">
+                <span>6</span>
+              </div>
+              <div class="tags">
+                <a>Science Fiction</a>
+                <a>Drama</a>
+                <a>Thriller</a>
+                <a>Adventure</a>
+                <a>Mystery</a>
+              </div>
+            </div>
+          </div>
+          <div class="movie-pleyer">
+            <video width="100%" height="650" controls poster="src/assets/img/Ad-Astra-poster.jpg">
+              <source src="video.mp4" type="video/mp4">
+            </video>
+          </div>
+        </main>
       </div>
     </div>
   </div>
 
   <footer>
-    <div class="container">
-      <p class="copyright">Â© webpack template 2019</p>
+    <div class="container footer-container">
+      <p class="copyright">© webpack template 2019</p>
       <p class="abuse"><a href="mailto:webpack@template.com">webpack@template.com</a></p>
     </div>
   </footer>
