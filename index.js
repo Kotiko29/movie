@@ -2,10 +2,9 @@
 import style from './src/assets/style/index.styl'; // импорт стилей
 // Создаем массив
 let movieUrls = [
-  "static/HalloweenKills.mp4",
   "static/AdAstraTrailer.mp4",
   "static/Ghostbusters.mp4",
-  
+  "static/HalloweenKills.mp4",
   "static/Koschey.mp4",
   "static/Soul.mp4",
   "static/ZvezdnyRazumTeazer.mp4"
@@ -13,15 +12,27 @@ let movieUrls = [
 // находим элементы
 let btnPreview = document.querySelector('.btn-preview'),
     btnNext = document.querySelector('.btn-next'),
-    sourceVideo = document.querySelector('source'),
-    currentVideoIndex = movieUrls[0];
+    sourceVideo = document.querySelector('video'),
+    currentVideoIndex = 0;
 
-    // вызываем событие
-    btnNext.addEventListener('click', function() {
-      alert('Меня нажали');
-    });
-    btnPreview.addEventListener('click', function() {
-      alert('Меня нажали');
-    });
+sourceVideo.src = movieUrls[currentVideoIndex];
 
-    sourceVideo.src = currentVideoIndex;
+// вызываем событие
+btnNext.addEventListener('click', function() {
+  console.log("следующий ролик");
+  currentVideoIndex++;
+  sourceVideo.src = movieUrls[currentVideoIndex];
+  if(currentVideoIndex === (movieUrls.length-1)){
+    btnNext.disabled = true;
+  }
+});
+btnPreview.addEventListener('click', function() {
+  console.log("предыдущий ролик");
+  currentVideoIndex--;
+  sourceVideo.src = movieUrls[currentVideoIndex];
+  if(currentVideoIndex === 0){
+    btnPreview.disabled = true;
+  }
+});
+
+    
