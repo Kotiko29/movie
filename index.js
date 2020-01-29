@@ -16,12 +16,14 @@ let btnPreview = document.querySelector('.btn-preview'),
     currentVideoIndex = 0;
 
 sourceVideo.src = movieUrls[currentVideoIndex];
+btnPreview.disabled = true;
 
 // вызываем событие
 btnNext.addEventListener('click', function() {
   console.log("следующий ролик");
   currentVideoIndex++;
   sourceVideo.src = movieUrls[currentVideoIndex];
+  btnPreview.disabled = false;
   if(currentVideoIndex === (movieUrls.length-1)){
     btnNext.disabled = true;
   }
@@ -30,6 +32,7 @@ btnPreview.addEventListener('click', function() {
   console.log("предыдущий ролик");
   currentVideoIndex--;
   sourceVideo.src = movieUrls[currentVideoIndex];
+  btnNext.disabled = false;
   if(currentVideoIndex === 0){
     btnPreview.disabled = true;
   }
