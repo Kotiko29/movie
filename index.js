@@ -4,7 +4,6 @@ import style from './src/assets/style/index.styl'; // импорт стилей
 let hamb = document.querySelector('.hamb'),
     sidebar = document.querySelector('.sidebar');
   hamb.addEventListener(`click`, function() { // При клике на кнопку меню сработает функция
-    // mainHeaderNavigation.classList.toggle('show'); // у класса .main-header-navigation переключаем класс show
     hamb.classList.toggle('hamb-close');
     sidebar.classList.toggle('sidebar-active');
 });
