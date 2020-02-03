@@ -11,14 +11,22 @@
     background-image url(../img/Ad-Astra-poster.jpg)
     background-size 100% 100%
     margin-bottom 30px
+    @media (max-width: 768px)
+      background-size 100%
+      background-repeat no-repeat
     .movie-description
       width 100%
       padding 20px
       background-color rgba(0%, 0%, 0%, 0.5);
+      @media (max-width: 768px)
+        font-size 14px
+        line-height 18px
       .movie-rating-wrap
         display flex
         flex-direction row
         align-items center
+        @media (max-width: 768px)
+          flex-direction column
         .movie-rating
           display flex
           width 70px
@@ -35,15 +43,23 @@
           margin-left 15px
           margin-top 20px
           margin-bottom 20px
+          // @media (max-width: 768px)
+          @media (max-width: 1160px)
+            display flex
+            flex-wrap wrap
+            justify-content center
           a 
             padding 5px 10px
             margin-right 10px
             background-color #f39c11
             border-radius 6px
             color black
+            // @media (max-width: 768px)
+            @media (max-width: 1160px)
+              margin-top 5px
   .movie-pleyer
     width 100%
-    height 650px
+    // height 650px
     .btn-wrap
       display flex
       justify-content space-between
