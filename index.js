@@ -1,28 +1,22 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
 
-let hamb = document.querySelector('.hamb'),
-    sidebar = document.querySelector('.sidebar');
-  hamb.addEventListener(`click`, function() { // При клике на кнопку меню сработает функция
-    hamb.classList.toggle('hamb-close');
-    sidebar.classList.toggle('sidebar-active');
-});
+    // Создаем массив
+  let  movieUrls = [
+    "static/video/AdAstraTrailer.mp4",
+    "static/video/Ghostbusters.mp4",
+    "static/video/HalloweenKills.mp4",
+    "static/video/Koschey.mp4",
+    "static/video/Soul.mp4",
+    "static/video/ZvezdnyRazumTeazer.mp4"
+  ],
+  // находим элементы
+      btnPreview = document.querySelector('.btn-preview'),
+      btnNext = document.querySelector('.btn-next'),
+      sourceVideo = document.querySelector('video'),
+      currentVideoIndex = 0;
 
-
-// Создаем массив
-let movieUrls = [
-  "static/video/AdAstraTrailer.mp4",
-  "static/video/Ghostbusters.mp4",
-  "static/video/HalloweenKills.mp4",
-  "static/video/Koschey.mp4",
-  "static/video/Soul.mp4",
-  "static/video/ZvezdnyRazumTeazer.mp4"
-];
-// находим элементы
-let btnPreview = document.querySelector('.btn-preview'),
-    btnNext = document.querySelector('.btn-next'),
-    sourceVideo = document.querySelector('video'),
-    currentVideoIndex = 0;
+// Переключение видео в плеере
 
 sourceVideo.src = movieUrls[currentVideoIndex];
 btnPreview.disabled = true;
