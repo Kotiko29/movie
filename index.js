@@ -14,7 +14,7 @@ if(document.querySelector('.index')){
 }
 
 
-if(document.querySelector('.post')){
+if(window.isPostPage){
   // Создаем массив
   let  movieUrls = [
     "static/video/AdAstraTrailer.mp4",
