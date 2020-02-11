@@ -1,7 +1,21 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
 
-    // Создаем массив
+if(document.querySelector('#index')){
+  let hamb = document.querySelector('.hamb'),
+    sidebar = document.querySelector('.sidebar');
+
+      // открытие и закрытие сайдбара в мобильной версии
+    hamb.addEventListener(`click`, function() { // При клике на кнопку меню сработает функция
+      hamb.classList.toggle('hamb-close');
+      sidebar.classList.toggle('sidebar-active');
+    });
+
+}
+
+
+if(document.querySelector('#post')){
+  // Создаем массив
   let  movieUrls = [
     "static/video/AdAstraTrailer.mp4",
     "static/video/Ghostbusters.mp4",
@@ -41,25 +55,5 @@ btnPreview.addEventListener('click', function() {
   }
 });
 
-// //создаем массив с постерами фильмов
-// let picturesUrls = [
-//   "static/pictures/adastra2019.jpg",
-//   "static/pictures/3530.jpg",
-//   "static/pictures/505841.jpg",
-//   "static/pictures/678975.jpg",
-//   "static/pictures/826373.jpg",
-//   "static/pictures/835086.jpg",
-//   "static/pictures/837737.jpg"
-//   // "static/pictures/903831.jpg",
-//   // "static/pictures/916498.jpg",
-//   // "static/pictures/1025082.jpg",
-//   // "static/pictures/1128272.jpg",
-//   // "static/pictures/1188529.jpg",
-//   // "static/pictures/1207299.jpg",
-//   // "static/pictures/1254418.jpg",
-//   // "static/pictures/8582828.jpg",
-//   // "static/pictures/345345345.jpg",
-//   // "static/pictures/3530.jpg",
-//   // "static/pictures/3530.jpg"
-// ];
-
+}
+  
