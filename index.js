@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
 
-if(document.querySelector('#index')){
+if(document.querySelector('.index')){
   let hamb = document.querySelector('.hamb'),
     sidebar = document.querySelector('.sidebar');
 
@@ -14,7 +14,7 @@ if(document.querySelector('#index')){
 }
 
 
-if(document.querySelector('#post')){
+if(document.querySelector('.post')){
   // Создаем массив
   let  movieUrls = [
     "static/video/AdAstraTrailer.mp4",
