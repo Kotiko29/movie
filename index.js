@@ -15,6 +15,7 @@ if(document.querySelector('.index')){
 
 
 if(window.isPostPage){
+  /////////////////////////Переключение роликов в плеере////////////////////////////////
   // Создаем массив
   let  movieUrls = [
     "static/video/AdAstraTrailer.mp4",
@@ -55,5 +56,34 @@ btnPreview.addEventListener('click', function() {
   }
 });
 
-}
+/////////////////////////Меняем скриншот при наведении////////////////////////////////
+//создаем массив с картинками
+let screenshotUrls = [
+  "../../../static/screenshots/212154.jpg",
+  "../../../static/screenshots/212155.jpg",
+  "../../../static/screenshots/212156.jpg",
+  "../../../static/screenshots/212157.jpg",
+  "../../../static/screenshots/212158.jpg",
+  "../../../static/screenshots/212159.jpg",
+];
+console.log(screenshotUrls);
+
+let movieScreen = document.querySelector('.movie-info'); //Находим элемент с картинкой
+let ScreenIndex = 0; // счетчик
+
+movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[0]+")";
+
+movieScreen.addEventListener('click', function() {
+  movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[ScreenIndex]+")";
+  ScreenIndex++;  
+
+  if(ScreenIndex === screenshotUrls.length) {
+    ScreenIndex = 0;
+  };
+
+})
+
+
+
+};
   
