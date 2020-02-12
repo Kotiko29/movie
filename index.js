@@ -66,24 +66,30 @@ let screenshotUrls = [
   "../../../static/screenshots/212158.jpg",
   "../../../static/screenshots/212159.jpg",
 ];
-console.log(screenshotUrls);
 
 let movieScreen = document.querySelector('.movie-info'); //Находим элемент с картинкой
 let ScreenIndex = 0; // счетчик
+let timer;
 
-movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[0]+")";
+movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[0]+")";//Картинка в начальном положении
 
-movieScreen.addEventListener('click', function() {
-  movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[ScreenIndex]+")";
-  ScreenIndex++;  
+//Запускаем слайдер при наведениии мыши
+movieScreen.addEventListener('mouseover', function RunMovieScreen () {
 
-  if(ScreenIndex === screenshotUrls.length) {
+  timer = setTimeout(function(){
+    movieScreen.style.backgroundImage = "url" + "(" +screenshotUrls[ScreenIndex]+")";
+    ScreenIndex++;  
+
+   if(ScreenIndex === screenshotUrls.length) {
     ScreenIndex = 0;
-  };
+    }
+    RunMovieScreen();
+  }, 2000);}
+);
+//Останавливаем слайдер, кода мышь убрали
+movieScreen.addEventListener('mouseout', function() {
+  clearTimeout(timer);
+});
 
-})
+}
 
-
-
-};
-  
