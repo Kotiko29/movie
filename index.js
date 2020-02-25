@@ -36,25 +36,48 @@ if(window.isPostPage){
 sourceVideo.src = movieUrls[currentVideoIndex];
 btnPreview.disabled = true;
 
+let player = videojs('my-video', {}, function(){
+  btnNext.addEventListener('click', function() {
+    console.log('Click next'); 
+    currentVideoIndex++;
+    sourceVideo.src = movieUrls[currentVideoIndex];
+    btnPreview.disabled = false;
+    if(currentVideoIndex === (movieUrls.length-1)){
+      btnNext.disabled = true;
+    }
+  });
+    btnPreview.addEventListener('click', function() {
+    console.log("Click Preview");
+    currentVideoIndex--;
+    sourceVideo.src = movieUrls[currentVideoIndex];
+    btnNext.disabled = false;
+    if(currentVideoIndex === 0){
+      btnPreview.disabled = true;
+    }
+  });
+  player.play();
+});
+
+
 // вызываем событие
-btnNext.addEventListener('click', function() {
-  console.log("следующий ролик");
-  currentVideoIndex++;
-  sourceVideo.src = movieUrls[currentVideoIndex];
-  btnPreview.disabled = false;
-  if(currentVideoIndex === (movieUrls.length-1)){
-    btnNext.disabled = true;
-  }
-});
-btnPreview.addEventListener('click', function() {
-  console.log("предыдущий ролик");
-  currentVideoIndex--;
-  sourceVideo.src = movieUrls[currentVideoIndex];
-  btnNext.disabled = false;
-  if(currentVideoIndex === 0){
-    btnPreview.disabled = true;
-  }
-});
+// btnNext.addEventListener('click', function() {
+//   console.log("следующий ролик");
+//   currentVideoIndex++;
+//   sourceVideo.src = movieUrls[currentVideoIndex];
+//   btnPreview.disabled = false;
+//   if(currentVideoIndex === (movieUrls.length-1)){
+//     btnNext.disabled = true;
+//   }
+// });
+// btnPreview.addEventListener('click', function() {
+//   console.log("предыдущий ролик");
+//   currentVideoIndex--;
+//   sourceVideo.src = movieUrls[currentVideoIndex];
+//   btnNext.disabled = false;
+//   if(currentVideoIndex === 0){
+//     btnPreview.disabled = true;
+//   }
+// });
 
 /////////////////////////Меняем скриншот при наведении////////////////////////////////
 //создаем массив с картинками
