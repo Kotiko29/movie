@@ -73,13 +73,24 @@
             </div>
           </div>
           <div class="movie-pleyer">
-            <video src="" width="100%" height="auto" controls poster="static/pictures/b-g.by_silverscreen.by_.jpg" autoplay>
-            </video>
-            <div class="btn-wrap">
-              <button class="btn btn-preview">preview</button>
-              <button class="btn btn-next">next</button>
-            </div>
+            <!-- <video src="" width="100%" height="auto" controls poster="static/pictures/b-g.by_silverscreen.by_.jpg" autoplay>
+            </video> -->
+            <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="100%"
+            poster="static\pictures\b-g.by_silverscreen.by_.jpg"
+            data-setup="{}"
+            src=""
+          >
+ 
            </div>
+           <div class="btn-wrap">
+            <button class="btn btn-preview">preview</button>
+            <button class="btn btn-next">next</button>
+          </div>
         </main>
       </div>
     </div>
