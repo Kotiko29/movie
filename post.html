@@ -9,6 +9,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="./static/favicon/favicon-16x16.png">
   <link rel="manifest" href="./static/favicon/site.webmanifest"> -->
   <title>Page movie</title>
+  <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>
   <script>
     window.isPostPage = true;
   </script>
@@ -72,21 +74,22 @@
               </div>
             </div>
           </div>
-          <div class="movie-pleyer">
+          <div class="movie-player">
             <!-- <video src="" width="100%" height="auto" controls poster="static/pictures/b-g.by_silverscreen.by_.jpg" autoplay>
             </video> -->
             <video
-            id="my-video"
-            class="video-js"
-            controls
-            preload="auto"
-            width="100%"
-            poster="static\pictures\b-g.by_silverscreen.by_.jpg"
-            data-setup="{}"
-            src=""
-          >
- 
-           </div>
+              id="my-video"
+              class="video-js vjs-default-skin"
+              controls
+              preload="auto"
+              width="100%"
+              poster=""
+              data-setup="{}"
+              src=""
+              autoplay
+            >
+            </div>
+            
            <div class="btn-wrap">
             <button class="btn btn-preview">preview</button>
             <button class="btn btn-next">next</button>
