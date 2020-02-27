@@ -32,32 +32,31 @@ if(window.isPostPage){
       currentVideoIndex = 0;
 
 // Переключение видео в плеере
-
-sourceVideo.src = movieUrls[currentVideoIndex];
-btnPreview.disabled = true;
-
-let player = videojs('my-video', {}, function(){
-  btnNext.addEventListener('click', function() {
-    console.log('Click next'); 
-    currentVideoIndex++;
-    sourceVideo.src = movieUrls[currentVideoIndex];
-    btnPreview.disabled = false;
-    if(currentVideoIndex === (movieUrls.length-1)){
-      btnNext.disabled = true;
-    }
-  });
-    btnPreview.addEventListener('click', function() {
-    console.log("Click Preview");
-    currentVideoIndex--;
-    sourceVideo.src = movieUrls[currentVideoIndex];
-    btnNext.disabled = false;
-    if(currentVideoIndex === 0){
-      btnPreview.disabled = true;
-    }
-  });
-  player.play();
+let player = videojs('videoPlayer', {
+  controls: 'true',
+  poster: '../../../static/pictures/silverscreen.jpg',
+}, function() {
+  btnNext.addEventListener('click', () => {
+        this.src({type:"video/mp4", src:'static/video/AdAstraTrailer.mp4'});
+        player.play();
+      });
+    btnPreview.addEventListener('click', () => {
+      this.src({type:"video/mp4", src:'static/video/Koschey.mp4'});
+      player.play();
+    });
 });
 
+ new playlist({
+  id:"player",
+  file:[
+     {"title":"AdAstraTrailer","file":"static/video/AdAstraTrailer.mp4"},
+     {"title":"Koschey","file":"static/video/Koschey.mp4"}
+  ]
+ });
+
+
+// sourceVideo.src = movieUrls[currentVideoIndex];
+// btnPreview.disabled = true;
 
 // вызываем событие
 // btnNext.addEventListener('click', function() {
