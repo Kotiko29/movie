@@ -37,23 +37,16 @@ let player = videojs('videoPlayer', {
   poster: '../../../static/pictures/silverscreen.jpg',
 }, function() {
   btnNext.addEventListener('click', () => {
-        this.src({type:"video/mp4", src:'static/video/AdAstraTrailer.mp4'});
+        player.src([
+          {type:"video/mp4", src:'static/video/Soul.mp4'},
+          {type:"video/mp4", src:'static/video/Koschey.mp4'},
+          {type:"video/mp4", src:'static/video/Ghostbusters.mp4'}
+        ]);
         player.play();
       });
-    btnPreview.addEventListener('click', () => {
-      this.src({type:"video/mp4", src:'static/video/Koschey.mp4'});
-      player.play();
-    });
 });
 
- new playlist({
-  id:"player",
-  file:[
-     {"title":"AdAstraTrailer","file":"static/video/AdAstraTrailer.mp4"},
-     {"title":"Koschey","file":"static/video/Koschey.mp4"}
-  ]
- });
-
+ 
 
 // sourceVideo.src = movieUrls[currentVideoIndex];
 // btnPreview.disabled = true;
