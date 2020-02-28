@@ -33,20 +33,22 @@ if(window.isPostPage){
 
 // Переключение видео в плеере
 let player = videojs('videoPlayer', {
-  controls: 'true',
+  controls: true,
   poster: '../../../static/pictures/silverscreen.jpg',
+  autoplay: true,
+  sources: [
+    {type:"video/mp4", src:'static/video/Soul.mp4'},
+    {type:"video/mp4", src:'static/video/Koschey.mp4'},
+    {type:"video/mp4", src:'static/video/Ghostbusters.mp4'}
+  ]
 }, function() {
   btnNext.addEventListener('click', () => {
-        player.src([
-          {type:"video/mp4", src:'static/video/Soul.mp4'},
-          {type:"video/mp4", src:'static/video/Koschey.mp4'},
-          {type:"video/mp4", src:'static/video/Ghostbusters.mp4'}
-        ]);
-        player.play();
+      player.play();
       });
+
 });
 
- 
+
 
 // sourceVideo.src = movieUrls[currentVideoIndex];
 // btnPreview.disabled = true;
