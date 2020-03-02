@@ -26,10 +26,10 @@ if(window.isPostPage){
     "static/video/ZvezdnyRazumTeazer.mp4"
   ],
   // находим элементы
-      btnPreview = document.querySelector('.btn-preview'),
-      btnNext = document.querySelector('.btn-next'),
-      sourceVideo = document.querySelector('video'),
-      currentVideoIndex = 0;
+      btnPreview = document.querySelector('.btn-preview'),// кнопка назад
+      btnNext = document.querySelector('.btn-next'),// кнопка вперед
+      currentVideoIndex = 0; // счетчик
+      btnPreview.disabled = true;// кнопка "назад" изначально заблокирована
 
 // Переключение видео в плеере
 let player = videojs('videoPlayer', {
@@ -41,36 +41,27 @@ let player = videojs('videoPlayer', {
   ]
 }, function() {
   btnNext.addEventListener('click', () => {
-      this.src({ type: 'video/mp4', src: 'static/video/Ghostbusters.mp4'}); //меняем src у player с помощью метода src()
-      this.play(); //после смены src запускаем проигрывание плеера
+      currentVideoIndex++;
+      console.log(movieUrls[currentVideoIndex]);
+      player.src({ type: 'video/mp4', src: movieUrls[currentVideoIndex]}); //меняем src у player с помощью метода src()
+      btnPreview.disabled = false;//после клика на "вперед" убираем блокировку кнопки
+      if(currentVideoIndex === (movieUrls.length-1)){//кгода доходим до последнего элемента, бликируем "вперед"
+        btnNext.disabled = true;
+      }
+      player.play(); //после смены src запускаем проигрывание плеера
       });
+  btnPreview.addEventListener('click', () => {
+      currentVideoIndex--;
+      console.log(movieUrls[currentVideoIndex]);
+      player.src({ type: 'video/mp4', src: movieUrls[currentVideoIndex]});
+      btnNext.disabled = false;
+      if(currentVideoIndex === 0){
+        btnPreview.disabled = true;
+      }
+      player.play(); //после смены src запускаем проигрывание плеера
+  });
 
 });
-
-
-
-// sourceVideo.src = movieUrls[currentVideoIndex];
-// btnPreview.disabled = true;
-
-// вызываем событие
-// btnNext.addEventListener('click', function() {
-//   console.log("следующий ролик");
-//   currentVideoIndex++;
-//   sourceVideo.src = movieUrls[currentVideoIndex];
-//   btnPreview.disabled = false;
-//   if(currentVideoIndex === (movieUrls.length-1)){
-//     btnNext.disabled = true;
-//   }
-// });
-// btnPreview.addEventListener('click', function() {
-//   console.log("предыдущий ролик");
-//   currentVideoIndex--;
-//   sourceVideo.src = movieUrls[currentVideoIndex];
-//   btnNext.disabled = false;
-//   if(currentVideoIndex === 0){
-//     btnPreview.disabled = true;
-//   }
-// });
 
 /////////////////////////Меняем скриншот при наведении////////////////////////////////
 //создаем массив с картинками
