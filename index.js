@@ -35,15 +35,14 @@ if(window.isPostPage){
 let player = videojs('videoPlayer', {
   controls: true,
   poster: '../../../static/pictures/silverscreen.jpg',
-  autoplay: true,
+  autoplay: false, //убрал автоплей - просто не удобно тестировать)
   sources: [
-    {type:"video/mp4", src:'static/video/Soul.mp4'},
-    {type:"video/mp4", src:'static/video/Koschey.mp4'},
-    {type:"video/mp4", src:'static/video/Ghostbusters.mp4'}
+    { type: 'video/mp4', src: 'static/video/AdAstraTrailer.mp4'} //оставил одно видео в источниках плеера
   ]
 }, function() {
   btnNext.addEventListener('click', () => {
-      player.play();
+      this.src({ type: 'video/mp4', src: 'static/video/Ghostbusters.mp4'}); //меняем src у player с помощью метода src()
+      this.play(); //после смены src запускаем проигрывание плеера
       });
 
 });
