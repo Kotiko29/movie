@@ -1,6 +1,18 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
 
+function loadMovie() {
+  let url = 'https://api.themoviedb.org/3/discover/movie?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query=sort_by=top_rated_movies.desc';
+
+  fetch(url)
+    .then(response =>{
+      return response.json();
+    })
+    .then(data => {
+      console.log('Data', data);
+    });
+}
+
 if(document.querySelector('.index')){
   let hamb = document.querySelector('.hamb'),
     sidebar = document.querySelector('.sidebar');
@@ -11,6 +23,8 @@ if(document.querySelector('.index')){
       sidebar.classList.toggle('sidebar-active');
     });
 
+  loadMovie();
+    
 }
 
 
