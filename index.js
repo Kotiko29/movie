@@ -1,15 +1,19 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
 
+let movies = [];
+
 function loadMovie() {
   let url = 'https://api.themoviedb.org/3/discover/movie?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query=sort_by=top_rated_movies.desc';
-
+  
   fetch(url)
     .then(response =>{
       return response.json();
     })
     .then(data => {
-      console.log('Data', data);
+      movies = data.results;
+      insertData(movies);
+      console.log(movies);
     });
 }
 
@@ -27,6 +31,24 @@ if(document.querySelector('.index')){
     
 }
 
+function insertData(movies) {
+  let movieContainer = document.querySelector('.content-list');
+
+  for(var i = 0; i < movies.length; i++){
+    movieContainer.innerHTML += `
+    <a class="content-link" href="post.html">
+      <div class="content-item-preview">
+        <img src="https://image.tmdb.org/t/p/w500/${movies[i].poster_path}" class="img-preview">
+      </div>
+      <div class="content-item-info">
+        <span class="content-item-rating">${movies[i].vote_average}</span>
+        <span class="content-item-title">${movies[i].original_title} </span>
+        <span class="content-item-year">${movies[i].release_date}</span>
+      </div>
+    </a>
+    `;
+  }
+}
 
 if(window.isPostPage){
   /////////////////////////Переключение роликов в плеере////////////////////////////////
