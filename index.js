@@ -43,7 +43,7 @@ function insertData(movies) {
       <div class="content-item-info">
         <span class="content-item-rating">${movies[i].vote_average}</span>
         <span class="content-item-title">${movies[i].original_title} </span>
-        <span class="content-item-year">${movies[i].release_date}</span>
+        <span class="content-item-year">${new Date(Date.parse(movies[i].release_date)).getFullYear()}</span>
       </div>
     </a>
     `;
