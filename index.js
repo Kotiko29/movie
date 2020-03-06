@@ -1,10 +1,11 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
-let i = 1;
+let currentPageIndex = 1; // счетчик для переключения страниц с фильмами
 let movies = [];
 
-function loadMovie(i) {
-  let url = `https://api.themoviedb.org/3/discover/movie?page=${i}&api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query=sort_by=top_rated_movies.desc`;
+//функция загрузки фильмов на страницу
+function loadMovie(currentPageIndex) {
+  let url = `https://api.themoviedb.org/3/discover/movie?page=${currentPageIndex}&api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query=sort_by=top_rated_movies.desc`;
   
   fetch(url)
     .then(response =>{
@@ -28,15 +29,18 @@ if(document.querySelector('.index')){
     });
 
     loadMovie();
-
+    //Подгрузка фильмов при нажатии на кнопку
   let changePageBtn = document.querySelector('.change_page');
   changePageBtn.addEventListener('click', function() {
-    i++;
-    loadMovie(i);
+    currentPageIndex++;
+    loadMovie(currentPageIndex);
+    if(currentPageIndex>4){
+      changePageBtn.classList.add('hide');
+    }
   });
-  
 }
 
+//функция для добавления содержимого на страницу с фильмами
 function insertData(movies) {
   let movieContainer = document.querySelector('.content-list');
 
