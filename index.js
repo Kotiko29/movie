@@ -2,7 +2,6 @@
 import style from './src/assets/style/index.styl'; // импорт стилей
 let currentPageIndex = 1; // счетчик для переключения страниц с фильмами
 let movies = [];
-let moviesID = [];
 
 //функция загрузки фильмов на страницу
 function loadMovie(currentPageIndex) {
@@ -28,10 +27,6 @@ function loadMovie(currentPageIndex) {
         });          
       }
    });
-
-    
-
-    
 }
 
 if(document.querySelector('.index')){
@@ -45,7 +40,6 @@ if(document.querySelector('.index')){
     });
 
     loadMovie();
-
 
     //Подгрузка фильмов при нажатии на кнопку
   let changePageBtn = document.querySelector('.change_page');
