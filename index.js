@@ -2,11 +2,12 @@
 import style from './src/assets/style/index.styl'; // импорт стилей
 let currentPageIndex = 1; // счетчик для переключения страниц с фильмами
 let movies = [];
+let moviesID = [];
 
 //функция загрузки фильмов на страницу
 function loadMovie(currentPageIndex) {
   let url = `https://api.themoviedb.org/3/discover/movie?page=${currentPageIndex}&api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query=sort_by=top_rated_movies.desc`;
-  
+
   fetch(url)
     .then(response =>{
       return response.json();
@@ -14,8 +15,23 @@ function loadMovie(currentPageIndex) {
     .then(data => {
       movies = data.results;
       insertData(movies);
-      console.log(movies);
-    });
+      // console.log(movies);
+
+      let moviesLink = document.querySelectorAll('.content-link');
+
+      for(let i=0; i < moviesLink.length; i++){
+        moviesLink[i].addEventListener('click', function(){
+          let movieID = moviesLink[i].getAttribute("data-id");
+          console.log(movieID);   
+          document.cookie = movieID;  
+          console.log(document.cookie);
+        });          
+      }
+   });
+
+    
+
+    
 }
 
 if(document.querySelector('.index')){
@@ -29,6 +45,8 @@ if(document.querySelector('.index')){
     });
 
     loadMovie();
+
+
     //Подгрузка фильмов при нажатии на кнопку
   let changePageBtn = document.querySelector('.change_page');
   changePageBtn.addEventListener('click', function() {
@@ -46,7 +64,7 @@ function insertData(movies) {
 
   for(var i = 0; i < movies.length; i++){
     movieContainer.innerHTML += `
-    <a class="content-link" href="post.html">
+    <a class="content-link" data-id="${movies[i].id}">
       <div class="content-item-preview">
         <img src="https://image.tmdb.org/t/p/w500/${movies[i].poster_path}" class="img-preview">
       </div>
