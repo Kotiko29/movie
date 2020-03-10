@@ -18,17 +18,29 @@ function loadMovie(currentPageIndex) {
 
       let moviesLink = document.querySelectorAll('.content-link');
 
+      // console.log(moviesLink);
+
       for(let i=0; i < moviesLink.length; i++){
         moviesLink[i].addEventListener('click', function(){
           let movieID = moviesLink[i].getAttribute("data-id");
-          console.log(movieID);   
-          document.cookie = movieID;  
+          document.cookie = movieID; 
           console.log(document.cookie);
+          let movieUrl = `https://api.themoviedb.org/3/movie/${document.cookie}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos`;
+          console.log(movieUrl);
+          fetch(movieUrl)
+          .then(response => {
+            console.log(response);
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          });
         });          
       }
    });
 }
 
+ 
 if(document.querySelector('.index')){
   let hamb = document.querySelector('.hamb'),
     sidebar = document.querySelector('.sidebar');
@@ -157,4 +169,22 @@ movieScreen.addEventListener('mouseout', function() {
 });
 
 }
+
+
+
+
+// let idMovie = 
+
+// function loadPageMovie(id){
+// 	let movieUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos,images`;
+	
+// 	fetch(movieUrl)
+// 		.then(response => {
+// 			return response.json();
+// 		})
+// 		.then(data => {
+// 			let movie = data.results;
+// 			insertData(movie);
+// 		});
+// }
 
