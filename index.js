@@ -22,8 +22,9 @@ function loadMovie(currentPageIndex) {
 
       for(let i=0; i < moviesLink.length; i++){
         moviesLink[i].addEventListener('click', function(){
+          let cookieId = document.cookie;// Прочитать куки
           let movieID = moviesLink[i].getAttribute("data-id");
-          document.cookie = movieID; 
+          document.cookie = `ID=${movieID}`; 
           console.log(document.cookie);
           let movieUrl = `https://api.themoviedb.org/3/movie/${document.cookie}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos`;
           console.log(movieUrl);
