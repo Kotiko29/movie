@@ -24,25 +24,29 @@ function loadMovie(currentPageIndex) {
           let movieID = moviesLink[i].getAttribute("data-id");
           document.cookie = `ID=${movieID}`; 
           console.log(cookieId);
-          window.location.href="post.html";
+          document.location.href="post.html";
         });          
       }
    });
 }
 
+// Читаем куки на странице фильма
+
 let cookieId = +(document.cookie).slice(3);// Прочитать куки
 console.log(cookieId);
 
+// функция загрузки информации о фильме
+
 function loadMovieInfo(){
   let movieUrl = `https://api.themoviedb.org/3/movie/${cookieId}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos`;
-  console.log(movieUrl);
+  // console.log(movieUrl);
   fetch(movieUrl)
       .then(response => {
-        console.log(response);
+        // console.log(response);
         return response.json();
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
         addMovieInfo(data);
       });
 }
@@ -93,12 +97,22 @@ function insertData(movies) {
   }
 }
 
-// Функция добавления информации о фильме на страницу
+///////// Функция добавления информации о фильме на страницу//////////////
+
 function addMovieInfo(data) {
   let movieInfo = document.querySelector('.movie-info');
 
+// добавляем бэкдроп на страницу фильма
   movieInfo.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${data.backdrop_path}`;
 
+  // добавляем список ссылок с тегами жанров в переменную
+  let text = ``;
+  console.log(typeof(text));
+  for(let i =0; i<data.genres.length; i++){
+    text +=`<a href="#">${data.genres[i].name}</a>`;
+  }
+
+  // формируем html описания фильма
   movieInfo.innerHTML = `
     <div class="movie-description">
       <h2>${data.original_title}</h2>
@@ -107,20 +121,15 @@ function addMovieInfo(data) {
         <div class="movie-rating">
           <div>${data.vote_average}</div>
         </div>
-        <div class="tags">
-          <a href="#">Science Fiction</a>
-          <a href="#">Drama</a>
-          <a href="#">Thriller</a>
-          <a href="#">Adventure</a>
-          <a href="#">Mystery</a>
-        </div>
+        <div class="tags">${text}</div>
       </div>
     </div>
   `;
-
 }
 
 if(window.isPostPage){
+
+  loadMovieInfo();
 
    /////////////////////////Переключение роликов в плеере////////////////////////////////
   // Создаем массив
