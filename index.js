@@ -18,8 +18,6 @@ function loadMovie(currentPageIndex) {
 
       let moviesLink = document.querySelectorAll('.content-link');
 
-      // console.log(moviesLink);
-
       for(let i=0; i < moviesLink.length; i++){
         moviesLink[i].addEventListener('click', function(){
           let cookieId = document.cookie;// Прочитать куки
@@ -32,8 +30,27 @@ function loadMovie(currentPageIndex) {
    });
 }
 
+let cookieId = +(document.cookie).slice(3);// Прочитать куки
+console.log(cookieId);
+
+function loadMovieInfo(){
+  let movieUrl = `https://api.themoviedb.org/3/movie/${cookieId}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos`;
+  console.log(movieUrl);
+  fetch(movieUrl)
+      .then(response => {
+        console.log(response);
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        addMovieInfo(data);
+      });
+}
+loadMovieInfo();
+
  
 if(document.querySelector('.index')){
+
   let hamb = document.querySelector('.hamb'),
     sidebar = document.querySelector('.sidebar');
 
@@ -76,8 +93,33 @@ function insertData(movies) {
   }
 }
 
+// Функция добавления информации о фильме на страницу
+function addMovieInfo(data) {
+  let movieInfo = document.querySelector('.movie-info');
+  movieInfo.innerHTML = `
+    <div class="movie-description">
+      <h2>${data.original_title}</h2>
+      <p>${data.overview}</p>
+      <div class="movie-rating-wrap">
+        <div class="movie-rating">
+          <div>${data.vote_average}</div>
+        </div>
+        <div class="tags">
+          <a href="#">Science Fiction</a>
+          <a href="#">Drama</a>
+          <a href="#">Thriller</a>
+          <a href="#">Adventure</a>
+          <a href="#">Mystery</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+}
+
 if(window.isPostPage){
-  /////////////////////////Переключение роликов в плеере////////////////////////////////
+
+   /////////////////////////Переключение роликов в плеере////////////////////////////////
   // Создаем массив
   let  movieUrls = [
     "static/video/AdAstraTrailer.mp4",
@@ -161,22 +203,4 @@ movieScreen.addEventListener('mouseout', function() {
 });
 
 }
-
-
-
-
-// let idMovie = 
-
-// function loadPageMovie(id){
-// 	let movieUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos,images`;
-	
-// 	fetch(movieUrl)
-// 		.then(response => {
-// 			return response.json();
-// 		})
-// 		.then(data => {
-// 			let movie = data.results;
-// 			insertData(movie);
-// 		});
-// }
 
