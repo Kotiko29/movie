@@ -25,17 +25,8 @@ function loadMovie(currentPageIndex) {
           let cookieId = document.cookie;// Прочитать куки
           let movieID = moviesLink[i].getAttribute("data-id");
           document.cookie = `ID=${movieID}`; 
-          console.log(document.cookie);
-          let movieUrl = `https://api.themoviedb.org/3/movie/${document.cookie}?api_key=1e8f63bdc33f52e0915fe3ddfbef6ea9&query&append_to_response=videos`;
-          console.log(movieUrl);
-          fetch(movieUrl)
-          .then(response => {
-            console.log(response);
-            return response.json();
-          })
-          .then(data => {
-            console.log(data);
-          });
+          console.log(cookieId);
+          window.location.href="post.html";
         });          
       }
    });
