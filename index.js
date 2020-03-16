@@ -96,6 +96,9 @@ function insertData(movies) {
 // Функция добавления информации о фильме на страницу
 function addMovieInfo(data) {
   let movieInfo = document.querySelector('.movie-info');
+
+  movieInfo.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${data.backdrop_path}`;
+
   movieInfo.innerHTML = `
     <div class="movie-description">
       <h2>${data.original_title}</h2>
