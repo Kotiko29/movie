@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 import style from './src/assets/style/index.styl'; // импорт стилей
+import Router from './router';
 let currentPageIndex = 1; // счетчик для переключения страниц с фильмами
 let movies = [];
 
@@ -215,4 +216,35 @@ movieScreen.addEventListener('mouseout', function() {
 });
 
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////
+
+        // инициализируем роутер
+        Router.init();
+       
+        // запускаем главную страницу
+        Router.dispatch('/');
+
+        // обработчик нажатий на ссылки
+        let handler = event =>  {
+           
+            // получаем запрошенный url
+            let url = new URL(event.currentTarget.href);
+           
+            // запускаем роутер, предавая ему path
+            Router.dispatch(url.pathname);
+           
+            // запрещаем дальнейший переход по ссылке
+            event.preventDefault();
+        }
+
+        // получаем все ссылки на странице
+        let anchors = document.querySelectorAll('a');
+        console.log(anchors);
+       
+        // вешаем на событие onclick обработчик
+        for( let anchor of anchors ) anchor.onclick = handler();
+       
 
